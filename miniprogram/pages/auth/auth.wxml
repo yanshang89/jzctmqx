@@ -1,0 +1,27 @@
+<!--pages/auth/auth.wxml - 授权页面结构-->
+<view class="container">
+  <!-- 机器码卡片 -->
+  <view class="card">
+    <view class="card-title">机器码</view>
+    <view class="form-group">
+      <input class="form-input" value="{{machineCode}}" readonly disabled />
+    </view>
+    <button class="btn btn-primary" bindtap="copyMachineCode">复制机器码</button>
+  </view>
+
+  <!-- 授权校验卡片 -->
+  <view class="card">
+    <view class="card-title">授权校验</view>
+    <view class="form-group">
+      <view class="form-label">激活码</view>
+      <input class="form-input" placeholder="请输入激活码"
+             value="{{authCode}}" bindinput="onAuthInput" />
+    </view>
+
+    <view class="status-wrap" wx:if="{{authStatus}}">
+      <view class="status-badge {{authStatus}}">{{authMsg}}</view>
+    </view>
+
+    <button class="btn btn-primary" bindtap="verifyAuth">校验授权</button>
+  </view>
+</view>

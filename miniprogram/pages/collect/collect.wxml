@@ -1,0 +1,77 @@
+<!--pages/collect/collect.wxml - 采集页面-->
+<view class="container">
+  <!-- 统计栏 -->
+  <view class="stat-bar">
+    <view class="stat-item">
+      <view class="stat-value">{{stat.current}}</view>
+      <view class="stat-label">当前条数</view>
+    </view>
+    <view class="stat-item">
+      <view class="stat-value">{{stat.history}}</view>
+      <view class="stat-label">历史条数</view>
+    </view>
+    <view class="stat-item">
+      <view class="stat-value">{{stat.skip_repeat}}</view>
+      <view class="stat-label">跳过重复</view>
+    </view>
+    <view class="stat-item">
+      <view class="stat-value">{{stat.no_tel}}</view>
+      <view class="stat-label">无电话</view>
+    </view>
+  </view>
+
+  <!-- 操作按钮 -->
+  <view class="btn-row">
+    <button class="btn btn-success" bindtap="startCollect"
+            disabled="{{startBtnDisabled}}">开始采集</button>
+    <button class="btn btn-danger" bindtap="stopCollect">停止采集</button>
+  </view>
+  <view class="btn-row">
+    <button class="btn btn-warning" bindtap="clearData">清空数据</button>
+    <button class="btn btn-info" bindtap="exportData">导出数据</button>
+  </view>
+
+  <!-- 采集结果列表 -->
+  <view class="card">
+    <view class="card-title">采集结果 ({{dataList.length}})</view>
+
+    <block wx:if="{{dataList.length === 0}}">
+      <view class="empty-state">
+        <view class="empty-icon">暂无数据</view>
+      </view>
+    </block>
+
+    <block wx:else>
+      <scroll-view scroll-y class="data-list">
+        <view class="data-item" wx:for="{{dataList}}" wx:key="idx">
+          <view class="item-header">
+            <text class="item-idx">{{item.idx}}</text>
+            <text class="item-name">{{item.name}}</text>
+          </view>
+          <view class="item-row">
+            <text class="item-label">地址：</text>
+            <text class="item-value">{{item.address}}</text>
+          </view>
+          <view class="item-row" wx:if="{{item.phone}}">
+            <text class="item-label">电话：</text>
+            <text class="item-value phone" bindtap="copyPhone" data-phone="{{item.phone}}">{{item.phone}}</text>
+            <text class="call-btn" bindtap="callPhone" data-phone="{{item.phone}}">📞 拨打</text>
+          </view>
+          <view class="item-row" wx:else>
+            <text class="item-label">电话：</text>
+            <text class="item-value no-tel">无</text>
+          </view>
+        </view>
+      </scroll-view>
+    </block>
+  </view>
+
+  <!-- 采集日志 -->
+  <view class="card">
+    <view class="card-title">采集日志</view>
+    <scroll-view scroll-y class="log-container">
+      <view class="log-line" wx:for="{{logs}}" wx:key="*this">{{item}}</view>
+      <view class="log-line" wx:if="{{logs.length === 0}}">等待采集...</view>
+    </scroll-view>
+  </view>
+</view>

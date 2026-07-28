@@ -1,0 +1,37 @@
+{
+  "pages": [
+    "pages/auth/auth",
+    "pages/config/config",
+    "pages/collect/collect",
+    "pages/keyword/keyword"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#667eea",
+    "navigationBarTitleText": "小飞拓客",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#f5f5f5"
+  },
+  "tabBar": {
+    "color": "#666",
+    "selectedColor": "#667eea",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/auth/auth",
+        "text": "授权"
+      },
+      {
+        "pagePath": "pages/config/config",
+        "text": "配置"
+      },
+      {
+        "pagePath": "pages/collect/collect",
+        "text": "采集"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

@@ -1,0 +1,35 @@
+<!--pages/keyword/keyword.wxml - 关键词搜索页面-->
+<view class="container">
+  <view class="card">
+    <view class="card-title">行业关键词搜索</view>
+
+    <view class="form-group">
+      <input class="form-input" placeholder="输入关键词搜索"
+             value="{{searchKey}}" bindinput="onSearchInput"
+             confirm-type="search" bindconfirm="searchKeyword" />
+    </view>
+
+    <button class="btn btn-info" bindtap="searchKeyword">搜索</button>
+  </view>
+
+  <view class="card">
+    <view class="card-title">关键词列表 ({{keywords.length}})</view>
+
+    <scroll-view scroll-y class="keyword-list">
+      <view class="keyword-item {{selectedKeyword === item ? 'selected' : ''}}"
+            wx:for="{{keywords}}" wx:key="*this"
+            data-kw="{{item}}" bindtap="selectKeyword">
+        {{item}}
+        <text class="check-icon" wx:if="{{selectedKeyword === item}}">✓</text>
+      </view>
+      <view class="empty-tip" wx:if="{{keywords.length === 0}}">
+        暂无匹配关键词
+      </view>
+    </scroll-view>
+  </view>
+
+  <view class="btn-row bottom-btns">
+    <button class="btn btn-success" bindtap="appendKeyword">追加</button>
+    <button class="btn btn-primary" bindtap="replaceKeyword">替换</button>
+  </view>
+</view>

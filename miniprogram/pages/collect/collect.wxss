@@ -1,0 +1,107 @@
+/* pages/collect/collect.wxss - 采集页面私有样式 */
+.container {
+  padding-bottom: 40rpx;
+}
+
+/* 空状态 */
+.empty-state {
+  text-align: center;
+  padding: 80rpx 0;
+  color: #999;
+}
+
+.empty-icon {
+  font-size: 28rpx;
+  color: #bbb;
+}
+
+/* 数据列表 */
+.data-list {
+  max-height: 800rpx;
+}
+
+.data-item {
+  padding: 24rpx 0;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.data-item:last-child {
+  border-bottom: none;
+}
+
+.item-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12rpx;
+}
+
+.item-idx {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #fff;
+  font-size: 22rpx;
+  padding: 4rpx 12rpx;
+  border-radius: 6rpx;
+  margin-right: 16rpx;
+  min-width: 40rpx;
+  text-align: center;
+}
+
+.item-name {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #333;
+  flex: 1;
+}
+
+.item-row {
+  display: flex;
+  align-items: center;
+  font-size: 24rpx;
+  margin-top: 8rpx;
+  flex-wrap: wrap;
+}
+
+.item-label {
+  color: #888;
+  flex-shrink: 0;
+}
+
+.item-value {
+  color: #555;
+  flex: 1;
+  word-break: break-all;
+}
+
+.item-value.phone {
+  color: #1890ff;
+  text-decoration: underline;
+}
+
+.item-value.no-tel {
+  color: #ccc;
+}
+
+.call-btn {
+  background: #52c41a;
+  color: #fff;
+  padding: 6rpx 16rpx;
+  border-radius: 6rpx;
+  font-size: 22rpx;
+  margin-left: 12rpx;
+}
+
+/* 日志容器 */
+.log-container {
+  background: #1e1e1e;
+  color: #d4d4d4;
+  padding: 20rpx;
+  border-radius: 10rpx;
+  font-family: "Courier New", monospace;
+  font-size: 22rpx;
+  max-height: 400rpx;
+  line-height: 1.6;
+}
+
+.log-line {
+  margin-bottom: 6rpx;
+}

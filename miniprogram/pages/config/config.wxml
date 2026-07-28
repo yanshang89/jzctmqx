@@ -1,0 +1,84 @@
+<!--pages/config/config.wxml - 配置页面-->
+<view class="container">
+  <!-- 采集参数 -->
+  <view class="card">
+    <view class="card-title">采集参数</view>
+
+    <view class="form-group">
+      <view class="form-label">采集城市</view>
+      <input class="form-input" placeholder="如: 北京"
+             value="{{city}}" bindinput="onCityInput" />
+    </view>
+
+    <view class="form-group">
+      <view class="form-label">行业关键词</view>
+      <view class="keyword-row">
+        <input class="form-input keyword-input" placeholder="如: 餐饮,火锅"
+               value="{{keyword}}" bindinput="onKeywordInput" />
+        <button class="btn btn-info search-btn" bindtap="goKeywordSearch">搜索</button>
+      </view>
+    </view>
+
+    <view class="form-group">
+      <view class="form-label">采集页数 (默认5)</view>
+      <input class="form-input" type="number" value="{{maxPage}}"
+             bindinput="onPageInput" />
+    </view>
+
+    <view class="form-group">
+      <view class="form-label">请求间隔 (秒)</view>
+      <input class="form-input" type="digit" value="{{delay}}"
+             bindinput="onDelayInput" />
+    </view>
+  </view>
+
+  <!-- 过滤选项 -->
+  <view class="card">
+    <view class="card-title">过滤选项</view>
+
+    <view class="checkbox-group">
+      <switch checked="{{onlyTel}}" bindchange="onOnlyTelChange" color="#667eea" />
+      <text class="checkbox-label">只采集有电话的商户</text>
+    </view>
+
+    <view class="checkbox-group">
+      <switch checked="{{filterHotline}}" bindchange="onFilterHotlineChange" color="#667eea" />
+      <text class="checkbox-label">过滤400/座机号码</text>
+    </view>
+
+    <view class="checkbox-group">
+      <switch checked="{{downloadImg}}" bindchange="onDownloadImgChange" color="#667eea" />
+      <text class="checkbox-label">下载门头照</text>
+    </view>
+  </view>
+
+  <!-- 代理设置 -->
+  <view class="card">
+    <view class="card-title">代理设置</view>
+
+    <view class="checkbox-group">
+      <switch checked="{{useProxy}}" bindchange="onUseProxyChange" color="#667eea" />
+      <text class="checkbox-label">使用代理</text>
+    </view>
+
+    <view class="form-group" wx:if="{{useProxy}}">
+      <input class="form-input" placeholder="如: http://127.0.0.1:8888"
+             value="{{proxyAddr}}" bindinput="onProxyInput" />
+    </view>
+  </view>
+
+  <!-- 导出格式 -->
+  <view class="card">
+    <view class="card-title">导出格式</view>
+    <view class="btn-row">
+      <button class="btn {{exportType === 'excel' ? 'btn-primary' : 'btn-default'}}"
+              data-type="excel" bindtap="setExportType">Excel</button>
+      <button class="btn {{exportType === 'csv' ? 'btn-primary' : 'btn-default'}}"
+              data-type="csv" bindtap="setExportType">CSV</button>
+    </view>
+    <button class="btn {{exportType === 'txt' ? 'btn-primary' : 'btn-default'}}"
+            data-type="txt" bindtap="setExportType">TXT</button>
+
+    <button class="btn btn-success" bindtap="saveConfig">保存配置</button>
+  </view>
+</view>

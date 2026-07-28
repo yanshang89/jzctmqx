@@ -1,0 +1,8 @@
+/* pages/auth/auth.wxss - 授权页面私有样式 */
+.container {
+  padding: 0;
+}
+
+.status-wrap {
+  margin-bottom: 24rpx;
+}
